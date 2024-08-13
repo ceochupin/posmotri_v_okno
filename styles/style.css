@@ -229,16 +229,7 @@ ol {
   line-height: 1;
 }
 
-/* тут не совсем понял по макету, нужно ли 
-подчеркивать текст при наведении на чек-бокс 
-
 .search-form__label:hover .search-form__label-text {
-  text-decoration: underline;
-}
-
-оставил подчеркивание только при наведении на текст */
-
-.search-form__label-text:hover {
   text-decoration: underline;
 }
 
