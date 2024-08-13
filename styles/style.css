@@ -161,7 +161,7 @@ ol {
 }
 
 /* долго не мог разобраться, почему появляется outline
-на input'е и смог решить только 2мя вариантами:
+на input'е в состоянии фсешму и смог решить только 2мя вариантами:
 
 1. через жесткое переопределение, но не стал оставлять
 
@@ -208,7 +208,7 @@ ol {
 зы: проще только заливкой бэкграунда :D */
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
-  content: '';
+  content: "";
   inset: 0;
   display: block;
   margin: 1px;
@@ -296,7 +296,7 @@ ol {
 
 .content__list {
   position: relative;
-  overflow: hidden scroll;
+  overflow: auto;
   inline-size: 100%;
   block-size: 298px;
 }
