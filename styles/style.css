@@ -13,6 +13,7 @@
   /* BORDER*/
 
   --border-line: 1px solid var(--color);
+  --border-line-bg-color: 1px solid var(--bg-element-color);
 
   /* OUTLINE */
 
@@ -146,9 +147,9 @@ ol {
 }
 
 .search-form__textfield {
-  border: none;
-  border-top: var(--border-line);
-  border-bottom: var(--border-line);
+  border: var(--border-line);
+  border-left: var(--border-line-bg-color);
+  border-right: var(--border-line-bg-color);
   padding: 2px 0;
   color: rgba(255 255 255 / 0.7);
   font-family: inherit;
@@ -207,7 +208,8 @@ ol {
 
 зы: проще только заливкой бэкграунда :D */
 
-.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before,
+.search-form__checkbox:active + .search-form__pseudo-checkbox::before {
   content: "";
   inset: 0;
   display: block;
@@ -231,6 +233,10 @@ ol {
 
 .search-form__label:hover .search-form__label-text {
   text-decoration: underline;
+}
+
+.search-form__label:active .search-form__label-text {
+  text-decoration: none;
 }
 
 /* общие стили кнопки и ее поведение */
@@ -302,12 +308,15 @@ ol {
 }
 
 /* СКРОЛЛ-БАР
-  Стандартный скролл выбивается из общего вида.
-  Наверное тут нужно с дизайнером обсуждать
-  Поэтому скрыл как в макете */
+  Оставил видимым, но при немного добавил стилей,
+  чтобы не выбивался визуал всего проекта */
 
 .content__list::-webkit-scrollbar {
-  inline-size: 0;
+  inline-size: 8px;
+}
+
+.content__list::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
 }
 
 .content__list-item:active {
@@ -326,17 +335,11 @@ ol {
   text-decoration: none;
 }
 
-.content__card-link:hover .content__video-card-title {
-  text-decoration: underline 2px;
-  text-underline-offset: 3px;
+.content__card-link:hover {
+  text-decoration: underline;
 }
 
-.content__card-link:hover .content__video-card-description {
-  text-decoration: underline 1px;
-}
-
-.content__card-link:active .content__video-card-title,
-.content__card-link:active .content__video-card-description {
+.content__card-link:active {
   text-decoration: none;
 }
 
@@ -378,6 +381,7 @@ ol {
 
   /* для длинных заголовков */
   word-break: break-all;
+
 }
 
 .content__video-card-description {
