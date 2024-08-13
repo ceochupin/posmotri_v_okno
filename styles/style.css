@@ -1,7 +1,51 @@
+/* Сразу извиняюсь за переменные!!! Решил попробовать, 
+но без дизайн системы с таким пока лучше не работать :( 
+либо ограничиться малым набором для проектной работы */
+
+:root {
+  /* COLORS */
+
+  --color: #fff;
+  --bg-page-color: #1b1919;
+  --bg-element-color: transparent;
+  --accent-color: #545050;
+
+  /* BORDER*/
+
+  --border-line: 1px solid var(--color);
+
+  /* OUTLINE */
+
+  --outline-on: 1px solid var(--color);
+  --outline-offset: 1px;
+
+  /* CHECKBOX */
+
+  --chbox-size: 19px;
+  --chbox-color-active: var(--color);
+
+  /* BUTTON */
+
+  --btn-color: var(--color);
+  --btn-bg-color: var(--bg-element-color);
+  --btn-bg-color-active: var(--accent-color);
+  --btn-border: var(--border-line);
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 html {
@@ -9,13 +53,15 @@ html {
 }
 
 .page {
+  display: flex;
+  margin: auto;
+  padding: 30px;
+  color: var(--color);
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 18px;
+  background-color: var(--bg-page-color);
   inline-size: 1200px;
   block-size: 100%;
-  margin: auto;
-  color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-size: 18px;
-  background-color: #1b1919;
 }
 
 h1,
@@ -35,4 +81,321 @@ fieldset {
 ul,
 ol {
   list-style: none;
+}
+
+.content {
+  display: flex;
+  align-items: end;
+  gap: 30px;
+  margin: auto;
+  inline-size: 100%;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-items: end;
+  gap: 16px;
+}
+
+.result__video-container {
+  position: relative;
+}
+
+.result__video {
+  object-fit: cover;
+  object-position: center;
+  inline-size: 711px;
+  block-size: 386px;
+}
+
+.result__video:focus {
+  outline: none;
+}
+
+.result__video:focus-visible {
+  outline: var(--outline-on);
+  outline-offset: var(--outline-offset);
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 40px;
+}
+
+.search-form__fieldset {
+  border: none;
+}
+
+.search-form__fieldset-title {
+  padding-bottom: 5px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.search-form__label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.search-form__textfield {
+  border: none;
+  border-top: var(--border-line);
+  border-bottom: var(--border-line);
+  padding: 2px 0;
+  color: rgba(255 255 255 / 0.7);
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background-color: var(--bg-element-color);
+  appearance: none;
+  inline-size: 225px;
+}
+
+/* долго не мог разобраться, почему появляется outline
+на input'е и смог решить только 2мя вариантами:
+
+1. через жесткое переопределение, но не стал оставлять
+
+.search-form__textfield:active {
+  outline: none !important;
+  border: 1px solid #fff !important;
+}
+
+2. через переопределение для комбинаций псевдоклассов
+зы: ожидаемое поведение тоже оставил, может у меня глюк */
+
+.search-form__textfield:active,
+.search-form__textfield:active:focus-visible {
+  border: var(--border-line);
+  outline: none;
+}
+
+.search-form__textfield:focus {
+  outline: none;
+}
+
+.search-form__textfield:focus-visible {
+  outline: var(--outline-on);
+  outline-offset: var(--outline-offset);
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
+}
+
+.search-form__pseudo-checkbox {
+  position: relative;
+  display: block;
+  border: var(--border-line);
+  background-color: var(--bg-element-color);
+  inline-size: var(--chbox-size);
+  block-size: var(--chbox-size);
+}
+
+/* выделенный чекбокс, может конечно есть более 
+элегантное решение, но в голову пришло только через 
+псевдоэлемент с абсолютным позиционированием.
+
+зы: проще только заливкой бэкграунда :D */
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: 1px;
+  background-color: var(--chbox-color-active);
+}
+
+.search-form__label:has(.search-form__checkbox:focus-visible) {
+  outline: var(--outline-on);
+  outline-offset: var(--outline-offset);
+}
+
+.search-form__label-text {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* тут не совсем понял по макету, нужно ли 
+подчеркивать текст при наведении на чек-бокс 
+
+.search-form__label:hover .search-form__label-text {
+  text-decoration: underline;
+}
+
+оставил подчеркивание только при наведении на текст */
+
+.search-form__label-text:hover {
+  text-decoration: underline;
+}
+
+/* общие стили кнопки и ее поведение */
+
+.button {
+  border: var(--btn-border);
+  padding: 6px;
+  color: var(--btn-color);
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  background-color: var(--btn-bg-color);
+  cursor: pointer;
+  inline-size: 100%;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:active {
+  text-decoration: none;
+  background-color: var(--btn-bg-color-active);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: var(--outline-on);
+  outline-offset: var(--outline-offset);
+}
+
+/* выравнивание и размер кнопки в search-панели */
+
+.search-form__submit-button {
+  align-self: end;
+}
+
+/* блок заголовка и контента с другими видео */
+
+.content__details {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  inline-size: 100%;
+}
+
+.title {
+  color: var(--color);
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 0.94;
+  text-transform: uppercase;
+}
+
+.content__accent {
+  color: var(--accent-color);
+}
+
+.content__list {
+  position: relative;
+  overflow: hidden scroll;
+  inline-size: 100%;
+  block-size: 298px;
+}
+
+/* СКРОЛЛ-БАР
+  Стандартный скролл выбивается из общего вида.
+  Наверное тут нужно с дизайнером обсуждать
+  Поэтому скрыл как в макете */
+
+.content__list::-webkit-scrollbar {
+  inline-size: 0;
+}
+
+.content__list-item:active {
+  background-color: var(--btn-bg-color-active);
+}
+
+.content__list-item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.content__card-link {
+  display: block;
+  margin: 2px;
+  padding: 2px;
+  color: var(--color);
+  text-decoration: none;
+}
+
+.content__card-link:hover .content__video-card-title {
+  text-decoration: underline 2px;
+  text-underline-offset: 3px;
+}
+
+.content__card-link:hover .content__video-card-description {
+  text-decoration: underline 1px;
+}
+
+.content__card-link:active .content__video-card-title,
+.content__card-link:active .content__video-card-description {
+  text-decoration: none;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:focus-visible {
+  outline: var(--outline-on);
+  outline-offset: var(--outline-offset);
+}
+
+.content__card-link_current {
+  display: block;
+  background-color: var(--accent-color);
+}
+
+.content__video-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.content__video-card-description-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 6px;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.content__video-card-title {
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+  text-transform: uppercase;
+
+  /* для длинных заголовков */
+  word-break: break-all;
+}
+
+.content__video-card-description {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 0.9;
+}
+
+.content__video-card-thumbnail {
+  object-fit: cover;
+  object-position: center;
+  inline-size: 194px;
+  block-size: 103px;
 }
