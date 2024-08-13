@@ -103,11 +103,11 @@ ol {
 }
 
 .result__video {
+  display: block;
   object-fit: cover;
   object-position: center;
   inline-size: 711px;
   block-size: 386px;
-  display: block;
 }
 
 .result__video:focus {
@@ -132,10 +132,10 @@ ol {
 
 .search-form__fieldset-title {
   padding-bottom: 5px;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.2;
-  font-family: "Fira Sans Condensed", sans-serif;
 }
 
 .search-form__label {
@@ -194,7 +194,6 @@ ol {
 }
 
 .search-form__pseudo-checkbox {
-  position: relative;
   display: block;
   border: var(--border-line);
   background-color: var(--bg-element-color);
@@ -208,12 +207,14 @@ ol {
 
 зы: проще только заливкой бэкграунда :D */
 
-.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
-  content: "";
-  position: absolute;
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
+  content: '';
   inset: 0;
+  display: block;
   margin: 1px;
   background-color: var(--chbox-color-active);
+  inline-size: 15px;
+  block-size: 15px;
 }
 
 .search-form__label:has(.search-form__checkbox:focus-visible) {
