@@ -1,7 +1,3 @@
-/* Сразу извиняюсь за переменные!!! Решил попробовать, 
-но без дизайн системы с таким пока лучше не работать :( 
-либо ограничиться малым набором для проектной работы */
-
 :root {
   /* COLORS */
 
@@ -148,8 +144,8 @@ ol {
 
 .search-form__textfield {
   border: var(--border-line);
-  border-left: var(--border-line-bg-color);
   border-right: var(--border-line-bg-color);
+  border-left: var(--border-line-bg-color);
   padding: 2px 0;
   color: rgba(255 255 255 / 0.7);
   font-family: inherit;
@@ -160,19 +156,6 @@ ol {
   appearance: none;
   inline-size: 225px;
 }
-
-/* долго не мог разобраться, почему появляется outline
-на input'е в состоянии фсешму и смог решить только 2мя вариантами:
-
-1. через жесткое переопределение, но не стал оставлять
-
-.search-form__textfield:active {
-  outline: none !important;
-  border: 1px solid #fff !important;
-}
-
-2. через переопределение для комбинаций псевдоклассов
-зы: ожидаемое поведение тоже оставил, может у меня глюк */
 
 .search-form__textfield:active,
 .search-form__textfield:active:focus-visible {
@@ -201,12 +184,6 @@ ol {
   inline-size: var(--chbox-size);
   block-size: var(--chbox-size);
 }
-
-/* выделенный чекбокс, может конечно есть более 
-элегантное решение, но в голову пришло только через 
-псевдоэлемент с абсолютным позиционированием.
-
-зы: проще только заливкой бэкграунда :D */
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox::before,
 .search-form__checkbox:active + .search-form__pseudo-checkbox::before {
@@ -307,9 +284,7 @@ ol {
   block-size: 298px;
 }
 
-/* СКРОЛЛ-БАР
-  Оставил видимым, но при немного добавил стилей,
-  чтобы не выбивался визуал всего проекта */
+/* СКРОЛЛ-БАР */
 
 .content__list::-webkit-scrollbar {
   inline-size: 8px;
@@ -381,7 +356,6 @@ ol {
 
   /* для длинных заголовков */
   word-break: break-all;
-
 }
 
 .content__video-card-description {
