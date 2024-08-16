@@ -93,6 +93,7 @@ ol {
   flex-direction: column;
   justify-items: end;
   gap: 16px;
+  margin-bottom: 2px;
 }
 
 .result__video-container {
@@ -121,7 +122,6 @@ ol {
   justify-content: space-between;
   align-items: start;
   gap: 40px;
-  margin-bottom: 2px;
 }
 
 .search-form__fieldset {
@@ -253,7 +253,6 @@ ol {
 
 .search-form__submit-button {
   align-self: end;
-  
   inline-size: 100%;
 }
 
@@ -264,6 +263,7 @@ ol {
   flex-direction: column;
   gap: 23px;
   inline-size: 100%;
+  margin-bottom: 2px;
 }
 
 .title {
@@ -375,6 +375,6 @@ ol {
 }
 
 .more-button {
-  margin: 0 2px 2px;
+  margin: 0 2px;
   inline-size: calc(100% - 4px);
 }
