@@ -121,6 +121,7 @@ ol {
   justify-content: space-between;
   align-items: start;
   gap: 40px;
+  margin-bottom: 2px;
 }
 
 .search-form__fieldset {
@@ -228,7 +229,6 @@ ol {
   line-height: 1.2;
   background-color: var(--btn-bg-color);
   cursor: pointer;
-  inline-size: 100%;
 }
 
 .button:hover {
@@ -253,6 +253,8 @@ ol {
 
 .search-form__submit-button {
   align-self: end;
+  
+  inline-size: 100%;
 }
 
 /* блок заголовка и контента с другими видео */
@@ -370,4 +372,9 @@ ol {
   object-position: center;
   inline-size: 194px;
   block-size: 103px;
+}
+
+.more-button {
+  margin: 0 2px 2px;
+  inline-size: calc(100% - 4px);
 }
